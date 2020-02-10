@@ -1,5 +1,12 @@
 # Election DApp
 
+## Dependencies
+
+| Dependency | Version                                                                     |
+| ---------- | --------------------------------------------------------------------------- |
+| Metamask   | [0.6.1](https://github.com/MetaMask/metamask-extension/releases/tag/v6.1.0) |
+| Node       | v11.0.0                                                                     |
+
 ## Steps
 
 1. Ensure that a local blockchain instance is running(like Ganache).
