@@ -9,12 +9,14 @@
   "scripts": {
     "compile": "./node_modules/.bin/truffle compile --all",
     "dev": "lite-server",
+    "ganache-cli": "scripts/run_ganache_cli.sh",
     "migrate": "./node_modules/.bin/truffle migrate --reset",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "scripts/test.sh test"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "ganache-cli": "^6.9.0",
     "lite-server": "^2.5.4",
     "truffle": "^5.1.12"
   }
