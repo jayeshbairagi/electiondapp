@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.16;
 
 contract Election {
 
@@ -13,8 +13,8 @@ contract Election {
 
 
     /** @dev Defines a Candidate struct with
-     * @param id uint to store the candidates's identifier
-     * @param name string to store the candidates's name
+     * @param id uint to store the candidate's identifier
+     * @param name string to store the candidate's name
      * @param registered bool to store the candidate's registered status
      * @param voteCount uint to store the candidate's vote count
      */
@@ -53,14 +53,14 @@ contract Election {
     }
 
     /**
-     * @dev addCandidate, to register a new candidate to the candadates mapping
+     * @dev addCandidate, to register a new candidate to the candidates mapping
      * Can only be called by the chairperson and when the election is in stopped state
      * Emits the event CandidateAddedEvent
      * @param candidateName string The name of the candidate
      */
-    function addCandidate(string candidateName) public {
-        require(msg.sender == chairperson);
-        require(!votingStarted);
+    function addCandidate(string memory candidateName) public {
+        require(msg.sender == chairperson, "Caller is not the chairperson");
+        require(!votingStarted, "Voting is in running state");
 
         candidatesCount++;
         candidates[candidatesCount] = Candidate(candidatesCount, candidateName, true, 0);
@@ -75,12 +75,13 @@ contract Election {
      * Emits the event VoterAddedEvent
      * @param voterAddress string The address of the voter
      */
-    function giveRightToVote (address voterAddress) public {
-        require(msg.sender == chairperson);
-        require(!votingStarted);
-        require(!voters[voterAddress].registered);
+    function giveRightToVote(address voterAddress) public {
+        require(msg.sender == chairperson, "Caller is not the chairperson");
+        require(!votingStarted, "Voting is in running state");
+        require(!voters[voterAddress].registered, "Voter is already registered");
 
         voters[voterAddress].registered = true;
+
         emit VoterAddedEvent(voterAddress);
     }
 
@@ -91,10 +92,13 @@ contract Election {
      * Emits the event VotedEvent
      * @param candidateId string The unique identifier of the candidate
      */
-    function vote (uint candidateId) public {
-        require(votingStarted);
-        require(voters[msg.sender].registered && !voters[msg.sender].voted);
-        require(candidates[candidateId].registered);
+    function vote(uint candidateId) public {
+        require(votingStarted, "Voting is in stopped state");
+        require(
+            voters[msg.sender].registered && !voters[msg.sender].voted,
+            "Voter already registered"
+        );
+        require(candidates[candidateId].registered, "Candidate is not registered");
 
         voters[msg.sender].voted = true;
         candidates[candidateId].voteCount++;
@@ -108,7 +112,7 @@ contract Election {
      * Emits the event VotingToggledEvent
      */
     function toggleVoting() public {
-        require(msg.sender == chairperson);
+        require(msg.sender == chairperson, "Caller is not the chairperson");
 
         votingStarted = !votingStarted;
 
