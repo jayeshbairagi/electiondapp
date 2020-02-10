@@ -9,7 +9,7 @@
 
 ## Steps
 
-1. To install the dependencies.
+1. Install the dependencies
 
 ```js
 npm install
@@ -21,13 +21,13 @@ npm install
 npm run ganache-cli
 ```
 
-3. To compile the contracts.
+3. Compile the contracts
 
 ```js
 npm run compile
 ```
 
-4. To deploy the contracts.
+4. Deploy the contracts
 
 ```js
 npm run migrate
@@ -39,7 +39,7 @@ npm run migrate
 pig skull wine supply april fluid thing emerge pistol crucial crush cactus
 ```
 
-6.To start the application
+6. To start the application
 
 ```js
 npm run dev
