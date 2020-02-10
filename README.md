@@ -9,27 +9,37 @@
 
 ## Steps
 
-1. Ensure that a local blockchain instance is running(like Ganache).
-
-2. To install the dependencies.
+1. To install the dependencies.
 
 ```js
 npm install
 ```
 
-3.  To compile the contracts.
+2. Ensure that a local blockchain instance is running(like Ganache) or run using
+
+```sh
+npm run ganache-cli
+```
+
+3. To compile the contracts.
 
 ```js
 npm run compile
 ```
 
-4.  To deploy the contracts.
+4. To deploy the contracts.
 
 ```js
 npm run migrate
 ```
 
-5.  To start the application
+5. Log in to metamask on browser using mnemonic
+
+```text
+pig skull wine supply april fluid thing emerge pistol crucial crush cactus
+```
+
+6.To start the application
 
 ```js
 npm run dev
