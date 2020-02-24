@@ -11,7 +11,7 @@
 
 1. Install the dependencies
 
-```js
+```sh
 npm install
 ```
 
@@ -23,13 +23,13 @@ npm run ganache-cli
 
 3. Compile the contracts
 
-```js
+```sh
 npm run compile
 ```
 
 4. Deploy the contracts
 
-```js
+```sh
 npm run migrate
 ```
 
@@ -41,6 +41,6 @@ pig skull wine supply april fluid thing emerge pistol crucial crush cactus
 
 6. To start the application
 
-```js
+```sh
 npm run dev
 ```
